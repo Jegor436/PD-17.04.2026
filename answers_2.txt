@@ -1,0 +1,9 @@
+1) Salt ir nejauša vērtība, kas tiek pievienota parolei pirms tās hashēšanas. Tas nodrošina, ka pat vienādas paroles iegūst atšķirīgus hash rezultātus. Salt palīdz aizsargāt pret rainbow table uzbrukumiem un padara masveida hash laušanu grūtāku.
+
+2) Paroles plaintext formā var viegli nolasīt, ja fails tiek nozagts vai sistēma tiek uzlauzta. Pat lokāls JSON fails nav drošs, jo tam var piekļūt ļaunprātīga programmatūra vai cits lietotājs. Ja paroles ir hashētas, uzbrucējam tās ir daudz grūtāk atjaunot.
+
+3) Brute-force uzbrukums ir metode, kur uzbrucējs mēģina ļoti daudz paroļu kombināciju, līdz atrod pareizo. Risk score analizē aizdomīgu uzvedību, piemēram, daudz neveiksmīgu mēģinājumu. Lockout uz laiku bloķē kontu pēc noteikta neveiksmīgu mēģinājumu skaita, samazinot uzbrukuma efektivitāti.
+
+4) hmac.compare_digest veic salīdzināšanu konstantā laikā, neatkarīgi no tā, kurā vietā vērtības atšķiras. Parasts '==' var beigt salīdzināšanu ātrāk, kas ļauj izmantot timing attack. Tas var palīdzēt uzbrucējam pakāpeniski uzminēt pareizo hash.
+
+5) Viena laba prakse ir izmantot drošus paroļu hash algoritmus, piemēram, bcrypt vai argon2. Otra ir ieviest divu faktoru autentifikāciju (2FA), kas pievieno papildu drošības slāni. Tāpat ieteicams izmantot rate limiting un stingru password policy.
